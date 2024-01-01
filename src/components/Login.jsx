@@ -26,24 +26,24 @@ const Login = () => {
         </h2>
         {!signIn && (
           <input
-            className="w-full rounded-md bg-neutral-700 my-2 p-3"
+            className="w-full rounded-md outline-none text-white bg-neutral-700 my-2 p-3"
             placeholder="Name"
           ></input>
         )}
         <input
-          className="w-full rounded-md bg-neutral-700 my-2 p-3"
+          className="w-full rounded-md outline-none text-white bg-neutral-700 my-2 p-3"
           placeholder="Email or phone number"
         ></input>
         <input
-          className="w-full rounded-md bg-neutral-700 my-2 p-3"
+          className="w-full rounded-md outline-none text-white bg-neutral-700 my-2 p-3"
           placeholder="Password"
         ></input>
         <button className="w-full rounded-md p-3 mt-8 border border-gray-700 bg-red-700 text-white">
           {signIn ? "Sign In" : "Sign Up"}
         </button>
         <p className="my-2">
-          {signIn ? "Already a member! " : "New to Netflix "}
-          <button onClick={toggleLoginForm}>
+          {signIn ? "Already a member! " : "New to Netflix? "}
+          <button onClick={toggleLoginForm} className="text-white">
             {signIn ? "Sign In" : "Sign Up"}
           </button>
         </p>
