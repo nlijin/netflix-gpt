@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "./Header";
+import { LOGINBACKGROUNDIMAGE } from "../utils/constant";
 
 const Login = () => {
   const [signIn, setSignIn] = useState(true);
@@ -11,15 +12,12 @@ const Login = () => {
   return (
     <div className="relative">
       <Header />
-      <div className="brightness-50">
-        <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/f85718e8-fc6d-4954-bca0-f5eaf78e0842/ea44b42b-ba19-4f35-ad27-45090e34a897/IN-en-20230918-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-          alt="netflix background"
-        />
+      <div className="brightness-50 bg-cover">
+        <img src={LOGINBACKGROUNDIMAGE} alt="netflix background" />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute  w-3/12 h-3/5 mx-auto px-20 py-10 bg-black bg-opacity-70 text-gray-600 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        className="absolute  w-[28rem] h-4/6 px-16 py-10 bg-black bg-opacity-80 text-gray-600 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[60%]"
       >
         <h2 className="text-3xl font-medium my-8 text-white">
           {signIn ? "Sign In" : "Sign Up"}
@@ -41,10 +39,10 @@ const Login = () => {
         <button className="w-full rounded-md p-3 mt-8 border border-gray-700 bg-red-700 text-white">
           {signIn ? "Sign In" : "Sign Up"}
         </button>
-        <p className="my-2">
-          {signIn ? "Already a member! " : "New to Netflix? "}
+        <p className="mt-16">
+          {signIn ? "New to Netflix? " : "Already a member! "}
           <button onClick={toggleLoginForm} className="text-white">
-            {signIn ? "Sign In" : "Sign Up"}
+            {signIn ? "Sign Up" : "Sign In"}
           </button>
         </p>
       </form>
