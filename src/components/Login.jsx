@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import Header from "./Header";
 import { LOGINBACKGROUNDIMAGE } from "../utils/constant";
+import { USER_AVATAR } from "../utils/constant";
 import { validateData } from "../utils/validate";
-import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import {
   createUserWithEmailAndPassword,
@@ -15,7 +15,6 @@ import { addUser } from "../utils/userSlice";
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const toggleLoginForm = () => {
@@ -47,12 +46,11 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL:
-              "https://images.pexels.com/photos/399772/pexels-photo-399772.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
-              //     // Profile updated!
-              const { uid, email, displayName, photoURL } = user;
+              // Profile updated!
+              const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(
                 addUser({
                   uid: uid,
@@ -61,7 +59,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error);
@@ -78,11 +75,10 @@ const Login = () => {
         email.current.value,
         password.current.value
       )
-        .then((userCredential) => {
+        .then((user) => {
           // Signed in
-          const user = userCredential.user;
+          // const user = userCredential.user;
           console.log(user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
