@@ -53,7 +53,7 @@ const Header = () => {
           />
           {/* <p>{user ? user.displayName : "No displayName"}</p> */}
           <button
-            className="bg-red-600 p-2 rounded-lg mr-10 text-white"
+            className="p-2 rounded-lg mr-10 text-white"
             onClick={handleSignOut}
           >
             Sign Out
